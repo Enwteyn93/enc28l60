@@ -52,6 +52,12 @@ uint16_t num;//номер пакета
 uint8_t data[];//данные
 } icmp_pkt_ptr;
 //--------------------------------------------------
+typedef struct USART_prop{
+  uint8_t usart_buf[20];
+  uint8_t usart_cnt;
+  uint8_t is_ip;
+} USART_prop_ptr;
+//--------------------------------------------------
 #define be16toword(a) ((((a)>>8)&0xff)|(((a)<<8)&0xff00))
 //--------------------------------------------------
 #define ETH_ARP be16toword(0x0806)
@@ -71,6 +77,8 @@ uint8_t data[];//данные
 //--------------------------------------------------
 void net_ini(void);
 void net_pool(void);
+void eth_send(enc28j60_frame_ptr *frame, uint16_t len);
+void UART1_RxCpltCallback(void);
 //--------------------------------------------------
 #include "arp.h"
 //--------------------------------------------------

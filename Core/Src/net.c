@@ -6,53 +6,14 @@ extern uint8_t macaddr[6];
 uint8_t net_buf[ENC28J60_MAXFRAME];
 uint8_t ipaddr[4]=IP_ADDR;
 char str1[60]={0};
+extern char str[20];
+USART_prop_ptr usartprop;
 //--------------------------------------------------
 void eth_send(enc28j60_frame_ptr *frame, uint16_t len)
 {
   memcpy(frame->addr_dest,frame->addr_src,6);
   memcpy(frame->addr_src,macaddr,6);
   enc28j60_packetSend((void*)frame,len + sizeof(enc28j60_frame_ptr));
-}
-//--------------------------------------------------
-void arp_send(enc28j60_frame_ptr *frame)
-{
-	arp_msg_ptr *msg = (void*)frame->data;
-  msg->op = ARP_REPLY;
-	memcpy(msg->macaddr_dst,msg->macaddr_src,6);
-	memcpy(msg->macaddr_src,macaddr,6);
-	memcpy(msg->macaddr_src,macaddr,6);
-	memcpy(msg->ipaddr_dst,msg->ipaddr_src,4);
-	memcpy(msg->ipaddr_src,ipaddr,4);
-	eth_send(frame,sizeof(arp_msg_ptr));
-}
-//--------------------------------------------------
-uint8_t arp_read(enc28j60_frame_ptr *frame, uint16_t len)
-{
-	uint8_t res=0;
-  arp_msg_ptr *msg=(void*)(frame->data);
-	if (len>=sizeof(arp_msg_ptr))
-	{
-		if ((msg->net_tp==ARP_ETH)&&(msg->proto_tp==ARP_IP))
-		{
-			if ((msg->op==ARP_REQUEST)&&(!memcmp(msg->ipaddr_dst,ipaddr,4)))
-			{
-					sprintf(str1,"request\r\nmac_src %02X:%02X:%02X:%02X:%02X:%02X\r\n",
-					msg->macaddr_src[0],msg->macaddr_src[1],msg->macaddr_src[2],msg->macaddr_src[3],msg->macaddr_src[4],msg->macaddr_src[5]);
-					HAL_UART_Transmit(&huart1,(uint8_t*)str1,strlen(str1),0x1000);
-					sprintf(str1,"ip_src %d.%d.%d.%d\r\n",
-					msg->ipaddr_src[0],msg->ipaddr_src[1],msg->ipaddr_src[2],msg->ipaddr_src[3]);
-					HAL_UART_Transmit(&huart1,(uint8_t*)str1,strlen(str1),0x1000);
-					sprintf(str1,"nmac_dst %02X:%02X:%02X:%02X:%02X:%02X\r\n",
-					msg->macaddr_dst[0],msg->macaddr_dst[1],msg->macaddr_dst[2],msg->macaddr_dst[3],msg->macaddr_dst[4],msg->macaddr_dst[5]);
-					HAL_UART_Transmit(&huart1,(uint8_t*)str1,strlen(str1),0x1000);
-					sprintf(str1,"ip_dst %d.%d.%d.%d\r\n",
-					msg->ipaddr_dst[0],msg->ipaddr_dst[1],msg->ipaddr_dst[2],msg->ipaddr_dst[3]);
-					HAL_UART_Transmit(&huart1,(uint8_t*)str1,strlen(str1),0x1000);
-					res=1;
-			}
-		}
-		return res;
-	}
 }
 //--------------------------------------------------
 uint16_t checksum(uint8_t *ptr, uint16_t len)
@@ -169,6 +130,31 @@ void net_pool(void)
 //--------------------------------------------------
 void net_ini()
 {
+	usartprop.usart_buf[0]=0;
+  usartprop.usart_cnt=0;
+  usartprop.is_ip=0;
+  HAL_UART_Transmit(&huart1,(uint8_t*)"123456rn",8,0x1000);
 	enc28j60_ini();
 }
 //--------------------------------------------------
+void UART1_RxCpltCallback(void)
+{
+	uint8_t b;
+  b = str[0];
+	//если вдруг случайно превысим длину буфера
+  if (usartprop.usart_cnt>20)
+  {
+    usartprop.usart_cnt=0;
+  }
+  else if (b == 'a')
+  {
+    usartprop.is_ip=1;//статус отрпавки ARP-запроса
+  }
+  else
+  {
+    usartprop.usart_buf[usartprop.usart_cnt] = b;
+    usartprop.usart_cnt++;
+  }
+  HAL_UART_Receive_IT(&huart1,(uint8_t*)str,1);
+}
+//-----------------------------------------------

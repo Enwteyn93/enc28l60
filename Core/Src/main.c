@@ -46,7 +46,7 @@ SPI_HandleTypeDef hspi1;
 UART_HandleTypeDef huart1;
 
 /* USER CODE BEGIN PV */
-
+char str[20];
 /* USER CODE END PV */
 
 /* Private function prototypes -----------------------------------------------*/
@@ -95,6 +95,7 @@ int main(void)
   MX_USART1_UART_Init();
   /* USER CODE BEGIN 2 */
 	net_ini();
+	HAL_UART_Receive_IT(&huart1,(uint8_t*)str,1);
   /* USER CODE END 2 */
 
   /* Infinite loop */
@@ -252,7 +253,13 @@ static void MX_GPIO_Init(void)
 }
 
 /* USER CODE BEGIN 4 */
-
+void HAL_UART_RxCpltCallback(UART_HandleTypeDef *huart)
+{
+  if(huart==&huart1)
+  {
+    UART1_RxCpltCallback();
+  }
+}
 /* USER CODE END 4 */
 
 /**
