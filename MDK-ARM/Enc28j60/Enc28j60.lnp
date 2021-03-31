@@ -1,0 +1,28 @@
+--cpu Cortex-M3
+"enc28j60\startup_stm32f103xe.o"
+"enc28j60\net.o"
+"enc28j60\enc28j60.o"
+"enc28j60\main.o"
+"enc28j60\stm32f1xx_it.o"
+"enc28j60\stm32f1xx_hal_msp.o"
+"enc28j60\arp.o"
+"enc28j60\stm32f1xx_hal_gpio_ex.o"
+"enc28j60\stm32f1xx_hal_spi.o"
+"enc28j60\stm32f1xx_hal.o"
+"enc28j60\stm32f1xx_hal_rcc.o"
+"enc28j60\stm32f1xx_hal_rcc_ex.o"
+"enc28j60\stm32f1xx_hal_gpio.o"
+"enc28j60\stm32f1xx_hal_dma.o"
+"enc28j60\stm32f1xx_hal_cortex.o"
+"enc28j60\stm32f1xx_hal_pwr.o"
+"enc28j60\stm32f1xx_hal_flash.o"
+"enc28j60\stm32f1xx_hal_flash_ex.o"
+"enc28j60\stm32f1xx_hal_exti.o"
+"enc28j60\stm32f1xx_hal_tim.o"
+"enc28j60\stm32f1xx_hal_tim_ex.o"
+"enc28j60\stm32f1xx_hal_uart.o"
+"enc28j60\system_stm32f1xx.o"
+--library_type=microlib --strict --scatter "Enc28j60\Enc28j60.sct"
+--summary_stderr --info summarysizes --map --load_addr_map_info --xref --callgraph --symbols
+--info sizes --info totals --info unused --info veneers
+--list "Enc28j60.map" -o Enc28j60\Enc28j60.axf
