@@ -31,3 +31,5 @@ enc28j60\net.o: C:\Keil_v5\ARM\ARMCC\Bin\..\include\string.h
 enc28j60\net.o: C:\Keil_v5\ARM\ARMCC\Bin\..\include\stdlib.h
 enc28j60\net.o: C:\Keil_v5\ARM\ARMCC\Bin\..\include\stdio.h
 enc28j60\net.o: ../Core/Inc/enc28j60.h
+enc28j60\net.o: ../Core/Inc/arp.h
+enc28j60\net.o: ../Core/Inc/net.h

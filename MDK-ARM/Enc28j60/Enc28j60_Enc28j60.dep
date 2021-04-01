@@ -1,8 +1,8 @@
 Dependencies for Project 'Enc28j60', Target 'Enc28j60': (DO NOT MODIFY !)
 CompilerVersion: 5060960::V5.06 update 7 (build 960)::.\ARMCC
 F (startup_stm32f103xe.s)(0x605DC33B)(--cpu Cortex-M3 -g --apcs=interwork --pd "__MICROLIB SETA 1"-I.\RTE\_Enc28j60-IC:\Users\99890\AppData\Local\Arm\Packs\ARM\CMSIS\5.7.0\CMSIS\Core\Include-IC:\Users\99890\AppData\Local\Arm\Packs\Keil\STM32F1xx_DFP\2.3.0\Device\Include--pd "__UVISION_VERSION SETA 533" --pd "_RTE_ SETA 1" --pd "STM32F10X_HD SETA 1" --pd "_RTE_ SETA 1"--list startup_stm32f103xe.lst --xref -o enc28j60\startup_stm32f103xe.o --depend enc28j60\startup_stm32f103xe.d)
-F (..\Core\Src\net.c)(0x606420AB)(--c99 -c --cpu Cortex-M3 -D__MICROLIB -g -O3 --apcs=interwork --split_sections -I ../Core/Inc -I ../Drivers/STM32F1xx_HAL_Driver/Inc -I ../Drivers/STM32F1xx_HAL_Driver/Inc/Legacy -I ../Drivers/CMSIS/Device/ST/STM32F1xx/Include -I ../Drivers/CMSIS/Include-I.\RTE\_Enc28j60-IC:\Users\99890\AppData\Local\Arm\Packs\ARM\CMSIS\5.7.0\CMSIS\Core\Include-IC:\Users\99890\AppData\Local\Arm\Packs\Keil\STM32F1xx_DFP\2.3.0\Device\Include-D__UVISION_VERSION="533" -D_RTE_ -DSTM32F10X_HD -D_RTE_ -DUSE_HAL_DRIVER -DSTM32F103xE-o enc28j60\net.o --omf_browse enc28j60\net.crf --depend enc28j60\net.d)
-I (../Core/Inc/net.h)(0x60631ACF)
+F (..\Core\Src\net.c)(0x6065B30D)(--c99 -c --cpu Cortex-M3 -D__MICROLIB -g -O3 --apcs=interwork --split_sections -I ../Core/Inc -I ../Drivers/STM32F1xx_HAL_Driver/Inc -I ../Drivers/STM32F1xx_HAL_Driver/Inc/Legacy -I ../Drivers/CMSIS/Device/ST/STM32F1xx/Include -I ../Drivers/CMSIS/Include-I.\RTE\_Enc28j60-IC:\Users\99890\AppData\Local\Arm\Packs\ARM\CMSIS\5.7.0\CMSIS\Core\Include-IC:\Users\99890\AppData\Local\Arm\Packs\Keil\STM32F1xx_DFP\2.3.0\Device\Include-D__UVISION_VERSION="533" -D_RTE_ -DSTM32F10X_HD -D_RTE_ -DUSE_HAL_DRIVER -DSTM32F103xE-o enc28j60\net.o --omf_browse enc28j60\net.crf --depend enc28j60\net.d)
+I (../Core/Inc/net.h)(0x60647B8A)
 I (../Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal.h)(0x605489AC)
 I (../Core/Inc/stm32f1xx_hal_conf.h)(0x605DC339)
 I (../Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal_rcc.h)(0x605489AC)
@@ -33,6 +33,7 @@ I (C:\Keil_v5\ARM\ARMCC\include\string.h)(0x5E8E58E2)
 I (C:\Keil_v5\ARM\ARMCC\include\stdlib.h)(0x5E8E58E2)
 I (C:\Keil_v5\ARM\ARMCC\include\stdio.h)(0x5E8E58E2)
 I (../Core/Inc/enc28j60.h)(0x606455B5)
+I (../Core/Inc/arp.h)(0x60647B14)
 F (..\Core\Src\enc28j60.c)(0x60645B58)(--c99 -c --cpu Cortex-M3 -D__MICROLIB -g -O3 --apcs=interwork --split_sections -I ../Core/Inc -I ../Drivers/STM32F1xx_HAL_Driver/Inc -I ../Drivers/STM32F1xx_HAL_Driver/Inc/Legacy -I ../Drivers/CMSIS/Device/ST/STM32F1xx/Include -I ../Drivers/CMSIS/Include-I.\RTE\_Enc28j60-IC:\Users\99890\AppData\Local\Arm\Packs\ARM\CMSIS\5.7.0\CMSIS\Core\Include-IC:\Users\99890\AppData\Local\Arm\Packs\Keil\STM32F1xx_DFP\2.3.0\Device\Include-D__UVISION_VERSION="533" -D_RTE_ -DSTM32F10X_HD -D_RTE_ -DUSE_HAL_DRIVER -DSTM32F103xE-o enc28j60\enc28j60.o --omf_browse enc28j60\enc28j60.crf --depend enc28j60\enc28j60.d)
 I (../Core/Inc/enc28j60.h)(0x606455B5)
 I (../Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal.h)(0x605489AC)
@@ -63,7 +64,7 @@ I (../Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal_spi.h)(0x605489AC)
 I (../Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal_uart.h)(0x605489AC)
 I (C:\Keil_v5\ARM\ARMCC\include\string.h)(0x5E8E58E2)
 I (C:\Keil_v5\ARM\ARMCC\include\stdlib.h)(0x5E8E58E2)
-F (../Core/Src/main.c)(0x60615C00)(--c99 -c --cpu Cortex-M3 -D__MICROLIB -g -O3 --apcs=interwork --split_sections -I ../Core/Inc -I ../Drivers/STM32F1xx_HAL_Driver/Inc -I ../Drivers/STM32F1xx_HAL_Driver/Inc/Legacy -I ../Drivers/CMSIS/Device/ST/STM32F1xx/Include -I ../Drivers/CMSIS/Include-I.\RTE\_Enc28j60-IC:\Users\99890\AppData\Local\Arm\Packs\ARM\CMSIS\5.7.0\CMSIS\Core\Include-IC:\Users\99890\AppData\Local\Arm\Packs\Keil\STM32F1xx_DFP\2.3.0\Device\Include-D__UVISION_VERSION="533" -D_RTE_ -DSTM32F10X_HD -D_RTE_ -DUSE_HAL_DRIVER -DSTM32F103xE-o enc28j60\main.o --omf_browse enc28j60\main.crf --depend enc28j60\main.d)
+F (../Core/Src/main.c)(0x60647C29)(--c99 -c --cpu Cortex-M3 -D__MICROLIB -g -O3 --apcs=interwork --split_sections -I ../Core/Inc -I ../Drivers/STM32F1xx_HAL_Driver/Inc -I ../Drivers/STM32F1xx_HAL_Driver/Inc/Legacy -I ../Drivers/CMSIS/Device/ST/STM32F1xx/Include -I ../Drivers/CMSIS/Include-I.\RTE\_Enc28j60-IC:\Users\99890\AppData\Local\Arm\Packs\ARM\CMSIS\5.7.0\CMSIS\Core\Include-IC:\Users\99890\AppData\Local\Arm\Packs\Keil\STM32F1xx_DFP\2.3.0\Device\Include-D__UVISION_VERSION="533" -D_RTE_ -DSTM32F10X_HD -D_RTE_ -DUSE_HAL_DRIVER -DSTM32F103xE-o enc28j60\main.o --omf_browse enc28j60\main.crf --depend enc28j60\main.d)
 I (../Core/Inc/main.h)(0x605DC339)
 I (../Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal.h)(0x605489AC)
 I (../Core/Inc/stm32f1xx_hal_conf.h)(0x605DC339)
@@ -91,11 +92,12 @@ I (../Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal_flash_ex.h)(0x605489AC)
 I (../Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal_pwr.h)(0x605489AC)
 I (../Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal_spi.h)(0x605489AC)
 I (../Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal_uart.h)(0x605489AC)
-I (../Core/Inc/net.h)(0x60631ACF)
+I (../Core/Inc/net.h)(0x60647B8A)
 I (C:\Keil_v5\ARM\ARMCC\include\string.h)(0x5E8E58E2)
 I (C:\Keil_v5\ARM\ARMCC\include\stdlib.h)(0x5E8E58E2)
 I (C:\Keil_v5\ARM\ARMCC\include\stdio.h)(0x5E8E58E2)
 I (../Core/Inc/enc28j60.h)(0x606455B5)
+I (../Core/Inc/arp.h)(0x60647B14)
 F (../Core/Src/stm32f1xx_it.c)(0x605DC339)(--c99 -c --cpu Cortex-M3 -D__MICROLIB -g -O3 --apcs=interwork --split_sections -I ../Core/Inc -I ../Drivers/STM32F1xx_HAL_Driver/Inc -I ../Drivers/STM32F1xx_HAL_Driver/Inc/Legacy -I ../Drivers/CMSIS/Device/ST/STM32F1xx/Include -I ../Drivers/CMSIS/Include-I.\RTE\_Enc28j60-IC:\Users\99890\AppData\Local\Arm\Packs\ARM\CMSIS\5.7.0\CMSIS\Core\Include-IC:\Users\99890\AppData\Local\Arm\Packs\Keil\STM32F1xx_DFP\2.3.0\Device\Include-D__UVISION_VERSION="533" -D_RTE_ -DSTM32F10X_HD -D_RTE_ -DUSE_HAL_DRIVER -DSTM32F103xE-o enc28j60\stm32f1xx_it.o --omf_browse enc28j60\stm32f1xx_it.crf --depend enc28j60\stm32f1xx_it.d)
 I (../Core/Inc/main.h)(0x605DC339)
 I (../Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal.h)(0x605489AC)
@@ -153,8 +155,39 @@ I (../Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal_flash_ex.h)(0x605489AC)
 I (../Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal_pwr.h)(0x605489AC)
 I (../Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal_spi.h)(0x605489AC)
 I (../Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal_uart.h)(0x605489AC)
-F (..\Core\Src\arp.c)(0x60645E44)(--c99 -c --cpu Cortex-M3 -D__MICROLIB -g -O3 --apcs=interwork --split_sections -I ../Core/Inc -I ../Drivers/STM32F1xx_HAL_Driver/Inc -I ../Drivers/STM32F1xx_HAL_Driver/Inc/Legacy -I ../Drivers/CMSIS/Device/ST/STM32F1xx/Include -I ../Drivers/CMSIS/Include-I.\RTE\_Enc28j60-IC:\Users\99890\AppData\Local\Arm\Packs\ARM\CMSIS\5.7.0\CMSIS\Core\Include-IC:\Users\99890\AppData\Local\Arm\Packs\Keil\STM32F1xx_DFP\2.3.0\Device\Include-D__UVISION_VERSION="533" -D_RTE_ -DSTM32F10X_HD -D_RTE_ -DUSE_HAL_DRIVER -DSTM32F103xE-o enc28j60\arp.o --omf_browse enc28j60\arp.crf --depend enc28j60\arp.d)
-I (../Core/Inc/arp.h)(0x60645E00)
+F (..\Core\Src\arp.c)(0x6065B354)(--c99 -c --cpu Cortex-M3 -D__MICROLIB -g -O3 --apcs=interwork --split_sections -I ../Core/Inc -I ../Drivers/STM32F1xx_HAL_Driver/Inc -I ../Drivers/STM32F1xx_HAL_Driver/Inc/Legacy -I ../Drivers/CMSIS/Device/ST/STM32F1xx/Include -I ../Drivers/CMSIS/Include-I.\RTE\_Enc28j60-IC:\Users\99890\AppData\Local\Arm\Packs\ARM\CMSIS\5.7.0\CMSIS\Core\Include-IC:\Users\99890\AppData\Local\Arm\Packs\Keil\STM32F1xx_DFP\2.3.0\Device\Include-D__UVISION_VERSION="533" -D_RTE_ -DSTM32F10X_HD -D_RTE_ -DUSE_HAL_DRIVER -DSTM32F103xE-o enc28j60\arp.o --omf_browse enc28j60\arp.crf --depend enc28j60\arp.d)
+I (../Core/Inc/arp.h)(0x60647B14)
+I (../Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal.h)(0x605489AC)
+I (../Core/Inc/stm32f1xx_hal_conf.h)(0x605DC339)
+I (../Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal_rcc.h)(0x605489AC)
+I (../Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal_def.h)(0x605489AC)
+I (../Drivers/CMSIS/Device/ST/STM32F1xx/Include/stm32f1xx.h)(0x605489AC)
+I (../Drivers/CMSIS/Device/ST/STM32F1xx/Include/stm32f103xe.h)(0x605489AC)
+I (../Drivers/CMSIS/Include/core_cm3.h)(0x605489A2)
+I (C:\Keil_v5\ARM\ARMCC\include\stdint.h)(0x5E8E58E2)
+I (../Drivers/CMSIS/Include/cmsis_version.h)(0x605489A2)
+I (../Drivers/CMSIS/Include/cmsis_compiler.h)(0x605489A2)
+I (../Drivers/CMSIS/Include/cmsis_armcc.h)(0x605489A2)
+I (../Drivers/CMSIS/Device/ST/STM32F1xx/Include/system_stm32f1xx.h)(0x605489AC)
+I (../Drivers/STM32F1xx_HAL_Driver/Inc/Legacy/stm32_hal_legacy.h)(0x605489AC)
+I (C:\Keil_v5\ARM\ARMCC\include\stddef.h)(0x5E8E58E2)
+I (../Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal_rcc_ex.h)(0x605489AC)
+I (../Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal_gpio.h)(0x605489AC)
+I (../Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal_gpio_ex.h)(0x605489AC)
+I (../Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal_exti.h)(0x605489AC)
+I (../Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal_dma.h)(0x605489AC)
+I (../Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal_dma_ex.h)(0x605489AC)
+I (../Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal_cortex.h)(0x605489AC)
+I (../Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal_flash.h)(0x605489AC)
+I (../Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal_flash_ex.h)(0x605489AC)
+I (../Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal_pwr.h)(0x605489AC)
+I (../Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal_spi.h)(0x605489AC)
+I (../Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal_uart.h)(0x605489AC)
+I (C:\Keil_v5\ARM\ARMCC\include\string.h)(0x5E8E58E2)
+I (C:\Keil_v5\ARM\ARMCC\include\stdlib.h)(0x5E8E58E2)
+I (../Core/Inc/enc28j60.h)(0x606455B5)
+I (../Core/Inc/net.h)(0x60647B8A)
+I (C:\Keil_v5\ARM\ARMCC\include\stdio.h)(0x5E8E58E2)
 F (../Drivers/STM32F1xx_HAL_Driver/Src/stm32f1xx_hal_gpio_ex.c)(0x605489AC)(--c99 -c --cpu Cortex-M3 -D__MICROLIB -g -O3 --apcs=interwork --split_sections -I ../Core/Inc -I ../Drivers/STM32F1xx_HAL_Driver/Inc -I ../Drivers/STM32F1xx_HAL_Driver/Inc/Legacy -I ../Drivers/CMSIS/Device/ST/STM32F1xx/Include -I ../Drivers/CMSIS/Include-I.\RTE\_Enc28j60-IC:\Users\99890\AppData\Local\Arm\Packs\ARM\CMSIS\5.7.0\CMSIS\Core\Include-IC:\Users\99890\AppData\Local\Arm\Packs\Keil\STM32F1xx_DFP\2.3.0\Device\Include-D__UVISION_VERSION="533" -D_RTE_ -DSTM32F10X_HD -D_RTE_ -DUSE_HAL_DRIVER -DSTM32F103xE-o enc28j60\stm32f1xx_hal_gpio_ex.o --omf_browse enc28j60\stm32f1xx_hal_gpio_ex.crf --depend enc28j60\stm32f1xx_hal_gpio_ex.d)
 I (../Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal.h)(0x605489AC)
 I (../Core/Inc/stm32f1xx_hal_conf.h)(0x605DC339)

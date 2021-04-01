@@ -89,6 +89,29 @@ uint8_t ip_read(enc28j60_frame_ptr *frame, uint16_t len)
   return res;
 }
 //--------------------------------------------------
+//функция преобразования строкового значения IP в 32-битное числовое
+void ip_extract(char* ip_str,uint8_t len, uint8_t* ipextr)
+{
+  uint8_t offset = 0;
+  uint8_t i;
+  char ss2[5] = {0};
+  char *ss1;
+  int ch = '.';
+	for(i=0;i<3;i++)
+	{
+		ss1 = strchr(ip_str,ch);
+		offset = ss1-ip_str+1;
+		strncpy(ss2,ip_str,offset);
+		ss2[offset]=0;
+		ipextr[i] = atoi(ss2);
+		ip_str+=offset;
+		len-=offset;
+	}
+	strncpy(ss2,ip_str,len);
+  ss2[len]=0;
+  ipextr[3] = atoi(ss2);
+}
+//--------------------------------------------------
 void eth_read(enc28j60_frame_ptr *frame, uint16_t len)
 {
 	if (len>=sizeof(enc28j60_frame_ptr))
@@ -121,10 +144,21 @@ void eth_read(enc28j60_frame_ptr *frame, uint16_t len)
 void net_pool(void)
 {
 	uint16_t len;
+	uint8_t ip[4]={0};
   enc28j60_frame_ptr *frame=(void*)net_buf;
 	while ((len=enc28j60_packetReceive(net_buf,sizeof(net_buf)))>0)
   {
     eth_read(frame,len);
+  }
+	if (usartprop.is_ip==1) //статус отправки ARP-запроса
+  {
+    HAL_UART_Transmit(&huart1,usartprop.usart_buf,usartprop.usart_cnt,0x1000);
+    HAL_UART_Transmit(&huart1,(uint8_t*)"\r\n",2,0x1000);
+		ip_extract((char*)usartprop.usart_buf,usartprop.usart_cnt,ip);
+		sprintf(str1,"%d.%d.%d.%d\r\n", ip[0],ip[1],ip[2],ip[3]);
+		HAL_UART_Transmit(&huart1,(uint8_t*)str1,strlen(str1),0x1000);
+    usartprop.is_ip = 0;
+    usartprop.usart_cnt=0;
   }
 }
 //--------------------------------------------------
