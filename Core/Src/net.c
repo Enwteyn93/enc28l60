@@ -5,6 +5,7 @@ extern uint8_t macaddr[6];
 //--------------------------------------------------
 uint8_t net_buf[ENC28J60_MAXFRAME];
 uint8_t ipaddr[4]=IP_ADDR;
+uint32_t clock_cnt=0;//счетчик секунд
 char str1[60]={0};
 extern char str[20];
 USART_prop_ptr usartprop;
@@ -114,6 +115,7 @@ void ip_extract(char* ip_str,uint8_t len, uint8_t* ipextr)
 //--------------------------------------------------
 void eth_read(enc28j60_frame_ptr *frame, uint16_t len)
 {
+	uint8_t res=0;
 	if (len>=sizeof(enc28j60_frame_ptr))
   {
     if(frame->type==ETH_ARP)
@@ -123,10 +125,14 @@ void eth_read(enc28j60_frame_ptr *frame, uint16_t len)
 			frame->addr_dest[0],frame->addr_dest[1],frame->addr_dest[2],frame->addr_dest[3],frame->addr_dest[4],frame->addr_dest[5],
 			len);
 			HAL_UART_Transmit(&huart1,(uint8_t*)str1,strlen(str1),0x1000);
-			arp_read(frame, len - sizeof(enc28j60_frame_ptr));
-			if(arp_read(frame,len-sizeof(enc28j60_frame_ptr)))
+			res = arp_read(frame, len - sizeof(enc28j60_frame_ptr));
+			if(res==1)
 			{
 				arp_send(frame);
+			}
+			else if(res==2)
+			{
+				arp_table_fill(frame);
 			}
 		}
 		else if(frame->type==ETH_IP)
@@ -155,8 +161,7 @@ void net_pool(void)
     HAL_UART_Transmit(&huart1,usartprop.usart_buf,usartprop.usart_cnt,0x1000);
     HAL_UART_Transmit(&huart1,(uint8_t*)"\r\n",2,0x1000);
 		ip_extract((char*)usartprop.usart_buf,usartprop.usart_cnt,ip);
-		sprintf(str1,"%d.%d.%d.%d\r\n", ip[0],ip[1],ip[2],ip[3]);
-		HAL_UART_Transmit(&huart1,(uint8_t*)str1,strlen(str1),0x1000);
+		arp_request(ip);
     usartprop.is_ip = 0;
     usartprop.usart_cnt=0;
   }
@@ -192,3 +197,10 @@ void UART1_RxCpltCallback(void)
   HAL_UART_Receive_IT(&huart1,(uint8_t*)str,1);
 }
 //-----------------------------------------------
+void TIM_PeriodElapsedCallback(void)
+{
+  //считаем секунды и записываем их в clock_cnt
+  clock_cnt++;
+}
+//-----------------------------------------------
+

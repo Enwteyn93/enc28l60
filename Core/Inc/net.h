@@ -9,6 +9,8 @@
 #include "enc28j60.h"
 //--------------------------------------------------
 #define IP_ADDR {192,168,233,91}
+#define MAC_BROADCAST {0xFF,0xFF,0xFF,0xFF,0xFF,0xFF}
+#define MAC_NULL {0x00,0x00,0x00,0x00,0x00,0x00}
 //--------------------------------------------------
 typedef struct enc28j60_frame{
   uint8_t addr_dest[6];
@@ -79,6 +81,7 @@ void net_ini(void);
 void net_pool(void);
 void eth_send(enc28j60_frame_ptr *frame, uint16_t len);
 void UART1_RxCpltCallback(void);
+void TIM_PeriodElapsedCallback(void);
 //--------------------------------------------------
 #include "arp.h"
 //--------------------------------------------------
